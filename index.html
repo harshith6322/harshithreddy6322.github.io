@@ -81,12 +81,12 @@
       const sheetID = "1SWxVgnorKFtuTL5X23OyTnBRLf3XioUwcyumn6_3r9Q";
       const apiKey = "AIzaSyCyX7kN7bnJWADL3Oa2sR4S2MVLzqX98qg"; // Insert your API key here
       // Assuming your data is in Sheet1 and covers 20 rows (A2:C21)
-      const range = "Sheet1!A2:C21";
+      const range = "Sheet1!A:Z";
 
       async function fetchVegetableData() {
         const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/${range}?key=${apiKey}`;
         try {
-          const response = await fetch(url);
+          const response = await fetch(url, { cache: "no-store" });
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
           }
