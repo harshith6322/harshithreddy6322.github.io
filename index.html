@@ -116,6 +116,10 @@
         });
       }
 
+      setInterval(() => {
+        fetchVegetableData();
+      }, 120 * 1000);
+
       window.onload = fetchVegetableData;
     </script>
   </body>
