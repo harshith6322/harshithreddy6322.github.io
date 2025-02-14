@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fresh Vegetables - Live Inventory</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #4caf50;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+      }
+      header h1 {
+        margin: 0;
+        font-size: 2rem;
+      }
+      header p {
+        margin: 0.5rem 0 0;
+      }
+      section {
+        margin: 2rem auto;
+        width: 90%;
+        max-width: 800px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      th,
+      td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+      th {
+        background-color: #4caf50;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      .error {
+        text-align: center;
+        color: red;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Fresh Vegetables</h1>
+      <p>Your live inventory and pricing updated in real-time!</p>
+    </header>
+    <section>
+      <table id="vegetableTable">
+        <thead>
+          <tr>
+            <th>Vegetable</th>
+            <th>Price (per kg)</th>
+            <th>Stock (kg)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data rows will be populated here via JavaScript -->
+        </tbody>
+      </table>
+      <div id="errorMessage" class="error"></div>
+    </section>
+    <script>
+      // Replace with your actual Sheet ID and API key
+      const sheetID = "1SWxVgnorKFtuTL5X23OyTnBRLf3XioUwcyumn6_3r9Q";
+      const apiKey = "AIzaSyCyX7kN7bnJWADL3Oa2sR4S2MVLzqX98qg"; // Insert your API key here
+      // Assuming your data is in Sheet1 and covers 20 rows (A2:C21)
+      const range = "Sheet1!A2:C21";
+
+      async function fetchVegetableData() {
+        const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/${range}?key=${apiKey}`;
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          const data = await response.json();
+          populateTable(data.values);
+        } catch (error) {
+          document.getElementById("errorMessage").textContent =
+            "Error loading data. Please try again later.";
+          console.error("Error fetching data:", error);
+        }
+      }
+
+      function populateTable(rows) {
+        const tableBody = document.querySelector("#vegetableTable tbody");
+        tableBody.innerHTML = ""; // Clear existing rows
+        if (!rows || rows.length === 0) {
+          tableBody.innerHTML =
+            "<tr><td colspan='3'>No data available</td></tr>";
+          return;
+        }
+        rows.forEach((row) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `<td>${row[0]}</td>
+                        <td>${row[1]}</td>
+                        <td>${row[2]}</td>`;
+          tableBody.appendChild(tr);
+        });
+      }
+
+      window.onload = fetchVegetableData;
+    </script>
+  </body>
+</html>
