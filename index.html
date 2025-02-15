@@ -54,6 +54,23 @@
         color: red;
         padding: 1rem;
       }
+
+      .redtd {
+        background-color: rgba(255, 26, 26, 0.678);
+      }
+      .serch {
+        display: flex;
+        width: 450px;
+        height: 30px;
+      }
+      .serch-input {
+        padding: 10px 15px;
+        outline: none;
+        border: none;
+        width: 100%;
+        font-size: 16px;
+        height: 100%;
+      }
     </style>
   </head>
   <body>
@@ -61,6 +78,19 @@
       <h1>Fresh Vegetables</h1>
       <p>Your live inventory and pricing updated in real-time!</p>
     </header>
+    <section class="serch">
+      <input
+        class="serch-input"
+        type="search"
+        placeholder="type here"
+        id="searchInput"
+      />
+      <select name="option" id="option">
+        <option value="stock">sort by stock</option>
+        <option value="price">sort by price</option>
+        <option value="topSelling">sort by top selling</option>
+      </select>
+    </section>
     <section>
       <table id="vegetableTable">
         <thead>
@@ -77,11 +107,10 @@
       <div id="errorMessage" class="error"></div>
     </section>
     <script>
-      // Replace with your actual Sheet ID and API key
       const sheetID = "1SWxVgnorKFtuTL5X23OyTnBRLf3XioUwcyumn6_3r9Q";
-      const apiKey = "AIzaSyCyX7kN7bnJWADL3Oa2sR4S2MVLzqX98qg"; // Insert your API key here
-      // Assuming your data is in Sheet1 and covers 20 rows (A2:C21)
+      const apiKey = "AIzaSyCyX7kN7bnJWADL3Oa2sR4S2MVLzqX98qg";
       const range = "Sheet1!A:Z";
+      let vegetableData = [];
 
       async function fetchVegetableData() {
         const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/${range}?key=${apiKey}`;
@@ -91,12 +120,40 @@
             throw new Error(`HTTP error! Status: ${response.status}`);
           }
           const data = await response.json();
-          populateTable(data.values);
+          vegetableData = data.values;
+          updateTable();
         } catch (error) {
           document.getElementById("errorMessage").textContent =
             "Error loading data. Please try again later.";
           console.error("Error fetching data:", error);
         }
+      }
+
+      function updateTable() {
+        const searchInput = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+        const sortOption = document.getElementById("option").value;
+        let filteredData = vegetableData.filter((row) =>
+          row[0].toLowerCase().includes(searchInput)
+        );
+
+        if (sortOption === "price") {
+          filteredData = filteredData.filter((row) => parseFloat(row[1]) > 0);
+          filteredData.sort((a, b) => parseFloat(a[1]) - parseFloat(b[1]));
+        } else if (sortOption === "stock") {
+          filteredData = filteredData.filter((row) => parseFloat(row[2]) > 0);
+          filteredData.sort((a, b) => parseFloat(b[2]) - parseFloat(a[2]));
+        } else if (sortOption === "topSelling") {
+          filteredData = filteredData.filter(
+            (row) => row[3] && row[3].includes("*")
+          );
+          filteredData.sort(
+            (a, b) => b[3].split("*").length - a[3].split("*").length
+          );
+        }
+
+        populateTable(filteredData);
       }
 
       function populateTable(rows) {
@@ -110,15 +167,24 @@
         rows.forEach((row) => {
           const tr = document.createElement("tr");
           tr.innerHTML = `<td>${row[0]}</td>
-                        <td>${row[1]}</td>
-                        <td>${row[2]}</td>`;
+          <td class="${row[1] === "0" ? "redtd" : ""}">${
+            row[1] === "0" ? "0" : row[1]
+          }</td>
+          <td class="${row[2] === "0" ? "redtd" : ""}">${
+            row[2] === "0" ? "0" : row[2]
+          }</td>`;
           tableBody.appendChild(tr);
         });
       }
 
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", updateTable);
+      document.getElementById("option").addEventListener("change", updateTable);
+
       setInterval(() => {
         fetchVegetableData();
-      }, 120 * 1000);
+      }, 4 * 1000);
 
       window.onload = fetchVegetableData;
     </script>
