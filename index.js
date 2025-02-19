@@ -1,47 +1,47 @@
-document.addEventListener("contextmenu", function (e) {
-  e.preventDefault();
-});
-let isDevToolsOpen = false;
+// document.addEventListener("contextmenu", function (e) {
+//   e.preventDefault();
+// });
+// let isDevToolsOpen = false;
 
-function checkDevTools() {
-  const threshold = 160;
-  const widthThreshold = window.outerWidth - window.innerWidth > threshold;
-  const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+// function checkDevTools() {
+//   const threshold = 160;
+//   const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+//   const heightThreshold = window.outerHeight - window.innerHeight > threshold;
 
-  if (widthThreshold || heightThreshold) {
-    if (!isDevToolsOpen) {
-      isDevToolsOpen = true;
-      window.location.href = "error.html";
-    }
-  } else {
-    if (isDevToolsOpen) {
-      isDevToolsOpen = false;
-      window.location.href = "index.html";
-    }
-  }
-}
+//   if (widthThreshold || heightThreshold) {
+//     if (!isDevToolsOpen) {
+//       isDevToolsOpen = true;
+//       window.location.href = "error.html";
+//     }
+//   } else {
+//     if (isDevToolsOpen) {
+//       isDevToolsOpen = false;
+//       window.location.href = "index.html";
+//     }
+//   }
+// }
 
-// Reduced interval for faster redirection
-setInterval(checkDevTools, 50);
+// // Reduced interval for faster redirection
+// setInterval(checkDevTools, 50);
 
-document.addEventListener("keydown", function (e) {
-  // Prevent F12
-  if (e.key === "F12") {
-    e.preventDefault();
-  }
-  // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
-  if (
-    e.ctrlKey &&
-    e.shiftKey &&
-    (e.key === "I" || e.key === "J" || e.key === "C")
-  ) {
-    e.preventDefault();
-  }
-  // Prevent Ctrl+U (view source)
-  if (e.ctrlKey && e.key === "u") {
-    e.preventDefault();
-  }
-});
+// document.addEventListener("keydown", function (e) {
+//   // Prevent F12
+//   if (e.key === "F12") {
+//     e.preventDefault();
+//   }
+//   // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+//   if (
+//     e.ctrlKey &&
+//     e.shiftKey &&
+//     (e.key === "I" || e.key === "J" || e.key === "C")
+//   ) {
+//     e.preventDefault();
+//   }
+//   // Prevent Ctrl+U (view source)
+//   if (e.ctrlKey && e.key === "u") {
+//     e.preventDefault();
+//   }
+// });
 
 const sheetID = "1SWxVgnorKFtuTL5X23OyTnBRLf3XioUwcyumn6_3r9Q";
 const apiKey = "AIzaSyCyX7kN7bnJWADL3Oa2sR4S2MVLzqX98qg";
