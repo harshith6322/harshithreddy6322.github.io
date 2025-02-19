@@ -9,6 +9,8 @@
 body {
   background-color: #f2f2f2;
   overflow-x: hidden;
+  width: 100vw;
+  height: 100vh;
 }
 /* Navbar */
 header {
@@ -197,9 +199,13 @@ section.search {
 /* Last Section */
 .last-section {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   width: 100vw;
-  height: 250px;
+  height: 300px;
+  gap: 0px;
+  padding: 5px 20px;
+  background-color: #4caf50;
+  border-radius: 10px;
 }
 .map-container {
   flex: 2;
@@ -257,7 +263,8 @@ section.search {
     height: 300px;
   }
   .nav-company p {
-    display: none;
+    /* display: none; */
+    font-size: 0.6rem;
   }
 }
 
@@ -321,6 +328,8 @@ section.search {
     height: 3rem;
     bottom: 15px;
     right: 15px;
+  }
+  .last-section {
   }
 }
 
