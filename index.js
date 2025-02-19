@@ -188,4 +188,4 @@ document.getElementById("option").addEventListener("change", updateTable);
 fetchVegetableData();
 
 // Continue fetching data every 4 seconds
-setInterval(fetchVegetableData, 3 * 1000);
+setInterval(fetchVegetableData, 120 * 1000);
