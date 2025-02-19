@@ -167,8 +167,7 @@ function populateTable(rows) {
     // Create Price section from row[1]
     const priceEl = document.createElement("div");
     priceEl.className = "card-price";
-    priceEl.textContent =
-      "Price: " + (row[1] === "0" ? "0" : row[1] + "" + "Rs");
+    priceEl.textContent = "Price: " + (row[1] === "0" ? "0" : row[1]);
     card.appendChild(priceEl);
 
     // Create Stock section from row[2]
