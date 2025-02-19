@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Security Warning</title>
+    <style>
+      body {
+        background-color: #1a1a1a;
+        color: #ff3333;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .container {
+        text-align: center;
+        padding: 2rem;
+        border: 2px solid #ff3333;
+        border-radius: 10px;
+        animation: pulse 2s infinite;
+      }
+
+      .warning-icon {
+        font-size: 5rem;
+        margin-bottom: 1rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+        color: #ff6666;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.4);
+        }
+
+        70% {
+          box-shadow: 0 0 0 20px rgba(255, 51, 51, 0);
+        }
+
+        100% {
+          box-shadow: 0 0 0 0 rgba(255, 51, 51, 0);
+        }
+      }
+    </style>
+    <script>
+      let devToolsOpen = false;
+      let redirecting = false;
+      document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.createElement("button");
+        btn.textContent = "Go to Index";
+        btn.style.position = "absolute";
+        btn.style.top = "20px";
+        btn.style.right = "20px";
+        btn.style.padding = "10px 20px";
+        btn.style.fontSize = "16px";
+        btn.style.cursor = "pointer";
+        document.body.appendChild(btn);
+
+        btn.addEventListener("click", () => {
+          if (devToolsOpen) {
+            alert("Please close Developer Tools to redirect.");
+          } else {
+            window.location.href = "index.html";
+          }
+        });
+      });
+      // Check for dev tools using console.log timing
+      setInterval(() => {
+        const start = performance.now();
+        console.log();
+        const end = performance.now();
+        if (end - start > 100) {
+          devToolsOpen = true;
+        } else if (devToolsOpen) {
+          // Redirect when dev tools are closed
+          devToolsOpen = false;
+          if (!redirecting) {
+            redirecting = true;
+            window.location.href = "index.html";
+          }
+        }
+      }, 1000);
+
+      // Prevent right click
+      document.addEventListener("contextmenu", (event) =>
+        event.preventDefault()
+      );
+
+      // Prevent Ctrl+Shift+I
+      document.addEventListener("keydown", function (event) {
+        if (event.ctrlKey && event.shiftKey && event.keyCode === 73) {
+          event.preventDefault();
+          if (!redirecting) {
+            redirecting = true;
+            window.location.href = "index.html";
+          }
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="warning-icon">⚠️</div>
+      <h1>Security Alert</h1>
+      <p>Unauthorized Access Detected</p>
+      <p>Developer Tools have been disabled due to security concerns.</p>
+      <p>This incident has been logged.</p>
+    </div>
+  </body>
+</html>
