@@ -4,25 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fresh Vegetables - Live Inventory</title>
+    <link rel="stylesheet" href="style.css"/>
     <script defer src="index.js"></script>
-    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <h1>Fresh Vegetables</h1>
-      <p>Your live inventory and pricing updated in real-time!</p>
+
+    <header style="justify-content: space-between;">
+     <div  style="display: flex; align-items: center; gap: 20px
+     ;">
+      <div class="nav-logo" >
+        <img src="./logo1.png" alt="Fresh Vegetables Logo" />
+      </div>
+      <div class="nav-company">
+        <h1>Veggies Hub</h1>
+        <P style="color: white;">fresh veggies from farmers</P>
+      </div>
+     </div>
+     
+     
+
+      <div class="nav-video" style="display: flex; align-items: center;"></div>
+        <video
+          src="./vecteezy_a-delivery-man-riding-a-scooter-on-green-background-4k_7118563.mp4"
+          autoplay
+          loop
+          muted
+          style="width: 100px; height: auto; "
+          preload="auto"
+        ></video>
+      </div>
     </header>
-    <section class="serch">
+    <section class="search">
       <input
-        class="serch-input"
+        class="search-input"
         type="search"
-        placeholder="type here"
+        placeholder="Type here"
         id="searchInput"
       />
       <select name="option" id="option">
-        <option value="stock">sort by stock</option>
-        <option value="price">sort by price</option>
-        <option value="topSelling">sort by top selling</option>
+        <option value="none" selected>none</option>
+        <option value="stock">Sort by stock</option>
+        <option value="price">Sort by price</option>
+        <option value="topSelling">Sort by top selling</option>
       </select>
     </section>
     <section class="btn-container">
@@ -34,32 +57,23 @@
       <table id="vegetableTable"></table>
       <div id="errorMessage" class="error"></div>
     </section>
-    <section class="whatapp-cont">
+    <section class="whatsapp-cont">
       <a
-        href="https://whatsapp.com/dl/"
+        href="https://api.whatsapp.com/message/CN6GL2IACTXZM1"
         target="_blank"
         rel="noopener noreferrer"
-        style="display: inline-block"
       >
         <img
           src="https://cdn2.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-whatsapp-circle-1024.png"
-          alt="order here"
-          class="whatapp-icon"
-          style="display: block"
+          alt="Order via WhatsApp"
+          class="whatsapp-icon"
         />
       </a>
     </section>
+   
     <section class="last-section">
       <div class="map-container">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20733.406428880284!2d80.04738541717894!3d15.521748763222025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4b01ae1001ec8f%3A0x426588bd765da08c!2sRavi%20Priya%20Mall%20%26%20Multiplex!5e0!3m2!1sen!2sin!4v1739962162303!5m2!1sen!2sin"
-          width="100%"
-          height="100%"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d347.7520518349702!2d79.3681411!3d13.617793!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb2b4c7c371aa0b%3A0xf66354d289ef2e15!2s2%2F532%2C%20Saibaba%20Colony%2C%20Thatithopu%2C%20Akkarampalle%2C%20Tirupati%2C%20Andhra%20Pradesh%20517502!5e1!3m2!1sen!2sin!4v1739985472024!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
       <aside class="footer-aside">
         <p>

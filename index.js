@@ -1,47 +1,47 @@
-// document.addEventListener("contextmenu", function (e) {
-//   e.preventDefault();
-// });
-// let isDevToolsOpen = false;
+document.addEventListener("contextmenu", function (e) {
+  e.preventDefault();
+});
+let isDevToolsOpen = false;
 
-// function checkDevTools() {
-//   const threshold = 160;
-//   const widthThreshold = window.outerWidth - window.innerWidth > threshold;
-//   const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+function checkDevTools() {
+  const threshold = 160;
+  const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+  const heightThreshold = window.outerHeight - window.innerHeight > threshold;
 
-//   if (widthThreshold || heightThreshold) {
-//     if (!isDevToolsOpen) {
-//       isDevToolsOpen = true;
-//       window.location.href = "error.html";
-//     }
-//   } else {
-//     if (isDevToolsOpen) {
-//       isDevToolsOpen = false;
-//       window.location.href = "index.html";
-//     }
-//   }
-// }
+  if (widthThreshold || heightThreshold) {
+    if (!isDevToolsOpen) {
+      isDevToolsOpen = true;
+      window.location.href = "error.html";
+    }
+  } else {
+    if (isDevToolsOpen) {
+      isDevToolsOpen = false;
+      window.location.href = "index.html";
+    }
+  }
+}
 
-// // Reduced interval for faster redirection
-// setInterval(checkDevTools, 50);
+// Reduced interval for faster redirection
+setInterval(checkDevTools, 50);
 
-// document.addEventListener("keydown", function (e) {
-//   // Prevent F12
-//   if (e.key === "F12") {
-//     e.preventDefault();
-//   }
-//   // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
-//   if (
-//     e.ctrlKey &&
-//     e.shiftKey &&
-//     (e.key === "I" || e.key === "J" || e.key === "C")
-//   ) {
-//     e.preventDefault();
-//   }
-//   // Prevent Ctrl+U (view source)
-//   if (e.ctrlKey && e.key === "u") {
-//     e.preventDefault();
-//   }
-// });
+document.addEventListener("keydown", function (e) {
+  // Prevent F12
+  if (e.key === "F12") {
+    e.preventDefault();
+  }
+  // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+  if (
+    e.ctrlKey &&
+    e.shiftKey &&
+    (e.key === "I" || e.key === "J" || e.key === "C")
+  ) {
+    e.preventDefault();
+  }
+  // Prevent Ctrl+U (view source)
+  if (e.ctrlKey && e.key === "u") {
+    e.preventDefault();
+  }
+});
 
 const sheetID = "1SWxVgnorKFtuTL5X23OyTnBRLf3XioUwcyumn6_3r9Q";
 const apiKey = "AIzaSyCyX7kN7bnJWADL3Oa2sR4S2MVLzqX98qg";
@@ -131,7 +131,7 @@ function populateTable(rows) {
       const img = document.createElement("img");
       img.src = row[4];
       img.alt = row[0];
-      // If the image fails to load, display "no img"
+      // If the image fails to load, display fallback text
       img.onerror = function () {
         img.style.display = "none";
         imgContainer.textContent = row[0];
@@ -140,40 +140,52 @@ function populateTable(rows) {
     } else {
       imgContainer.textContent = row[0];
     }
+    // Ensure the image container acts as a relative reference
+    imgContainer.style.position = "relative";
     card.appendChild(imgContainer);
+
+    // If stock is zero, add an "Out of Stock" label and a red border
+    if (parseFloat(row[2]) === 0) {
+      const outOfStockLabel = document.createElement("div");
+      outOfStockLabel.textContent = "Out of Stock";
+      outOfStockLabel.style.position = "absolute";
+      outOfStockLabel.style.top = "5px";
+      outOfStockLabel.style.left = "5px";
+      outOfStockLabel.style.backgroundColor = "red";
+      outOfStockLabel.style.color = "white";
+      outOfStockLabel.style.padding = "2px 5px";
+      outOfStockLabel.style.fontSize = "12px";
+      imgContainer.appendChild(outOfStockLabel);
+
+      card.style.border = "2px solid red";
+    }
 
     // Create Name section using row[0]
     const nameEl = document.createElement("div");
     nameEl.className = "card-name";
     nameEl.textContent = row[0];
-    // Set up overlay styling
+    // Setup overlay styling so the name appears on top of the image
     nameEl.style.position = "absolute";
-    // nameEl.style.top = "0";
     nameEl.style.left = "0";
     nameEl.style.bottom = "0";
-
     nameEl.style.width = "100%";
-    // nameEl.style.backgroundColor = "rgba(0, 0, 0, 0.6)";
     nameEl.style.color = "white";
     nameEl.style.padding = "5px";
     nameEl.style.textAlign = "center";
     nameEl.style.opacity = "1";
-    // nameEl.style.transition = "opacity 0.3s";
-    // Ensure the image container acts as a relative reference
-    imgContainer.style.position = "relative";
     imgContainer.appendChild(nameEl);
-    // Show the name overlay on hover
 
     // Create Price section from row[1]
     const priceEl = document.createElement("div");
     priceEl.className = "card-price";
-    priceEl.textContent = "Price: " + (row[1] === "0" ? "0" : row[1]);
+    priceEl.textContent = "Price: " + (row[1] === "0" ? "0" : "₹" + row[1]);
     card.appendChild(priceEl);
 
     // Create Stock section from row[2]
     const stockEl = document.createElement("div");
     stockEl.className = "card-stock";
-    stockEl.textContent = "Stock: " + (row[2] === "0" ? "0" : row[2]);
+    stockEl.textContent =
+      "Market Price: " + (row[2] === "0" ? "0" : "₹" + row[2]);
     card.appendChild(stockEl);
 
     container.appendChild(card);
