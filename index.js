@@ -46,6 +46,7 @@ document.addEventListener("keydown", function (e) {
 const sheetID = "1SWxVgnorKFtuTL5X23OyTnBRLf3XioUwcyumn6_3r9Q";
 const apiKey = "AIzaSyCyX7kN7bnJWADL3Oa2sR4S2MVLzqX98qg";
 const range = "Sheet1!A:Z";
+const valueRenderOption = "FORMULA";
 let vegetableData = [];
 
 async function fetchVegetableData() {
@@ -91,22 +92,73 @@ function updateTable() {
 }
 
 function populateTable(rows) {
-  const tableBody = document.querySelector("#vegetableTable tbody");
-  tableBody.innerHTML = ""; // Clear existing rows
+  // Get the container that will hold the cards; ensure the element with id "vegetableTable" exists
+  const container = document.getElementById("vegetableTable");
+  container.innerHTML = ""; // Clear existing content
+
   if (!rows || rows.length === 0) {
-    tableBody.innerHTML = "<tr><td colspan='3'>No data available</td></tr>";
+    container.innerHTML = "<div>No data available</div>";
     return;
   }
+
   rows.forEach((row) => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${row[0]}</td>
-    <td class="${row[1] === "0" ? "redtd" : ""}">${
-      row[1] === "0" ? "0" : row[1]
-    }</td>
-    <td class="${row[2] === "0" ? "redtd" : ""}">${
-      row[2] === "0" ? "0" : row[2]
-    }</td>`;
-    tableBody.appendChild(tr);
+    const card = document.createElement("div");
+    card.className = "card"; // Styled via CSS
+
+    // Create Image section
+    const imgContainer = document.createElement("div");
+    imgContainer.className = "card-img";
+    if (row[4] && row[4].trim() !== "") {
+      const img = document.createElement("img");
+      img.src = row[4];
+      img.alt = row[0];
+      // If the image fails to load, display "no img"
+      img.onerror = function () {
+        img.style.display = "none";
+        imgContainer.textContent = row[0];
+      };
+      imgContainer.appendChild(img);
+    } else {
+      imgContainer.textContent = "no img";
+    }
+    card.appendChild(imgContainer);
+
+    // Create Name section using row[0]
+    const nameEl = document.createElement("div");
+    nameEl.className = "card-name";
+    nameEl.textContent = row[0];
+    // Set up overlay styling
+    nameEl.style.position = "absolute";
+    // nameEl.style.top = "0";
+    nameEl.style.left = "0";
+    nameEl.style.bottom = "0";
+
+    nameEl.style.width = "100%";
+    // nameEl.style.backgroundColor = "rgba(0, 0, 0, 0.6)";
+    nameEl.style.color = "white";
+    nameEl.style.padding = "5px";
+    nameEl.style.textAlign = "center";
+    nameEl.style.opacity = "1";
+    // nameEl.style.transition = "opacity 0.3s";
+    // Ensure the image container acts as a relative reference
+    imgContainer.style.position = "relative";
+    imgContainer.appendChild(nameEl);
+    // Show the name overlay on hover
+
+    // Create Price section from row[1]
+    const priceEl = document.createElement("div");
+    priceEl.className = "card-price";
+    priceEl.textContent =
+      "Price: " + (row[1] === "0" ? "0" : row[1] + "" + "Rs");
+    card.appendChild(priceEl);
+
+    // Create Stock section from row[2]
+    const stockEl = document.createElement("div");
+    stockEl.className = "card-stock";
+    stockEl.textContent = "Stock: " + (row[2] === "0" ? "0" : row[2]);
+    card.appendChild(stockEl);
+
+    container.appendChild(card);
   });
 }
 
@@ -117,4 +169,4 @@ document.getElementById("option").addEventListener("change", updateTable);
 fetchVegetableData();
 
 // Continue fetching data every 4 seconds
-setInterval(fetchVegetableData, 4 * 1000);
+setInterval(fetchVegetableData, 6 * 1000);
