@@ -1,24 +1,33 @@
+* {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  scroll-behavior: smooth;
+}
 body {
-  font-family: Arial, sans-serif;
+  /* font-family: Arial, sans-serif; */
   background-color: #f2f2f2;
   margin: 0;
   padding: 0;
   position: relative;
   overflow-x: hidden;
 }
+
 header {
   background-color: #4caf50;
   color: white;
   text-align: center;
   padding: 1rem;
 }
+
 header h1 {
   margin: 0;
   font-size: 2rem;
 }
+
 header p {
   margin: 0.5rem 0 0;
 }
+
 section.serch {
   margin: 2rem auto;
   width: 90%;
@@ -27,6 +36,7 @@ section.serch {
   justify-content: center;
   gap: 1rem;
 }
+
 .serch-input {
   padding: 10px 15px;
   outline: none;
@@ -35,7 +45,8 @@ section.serch {
   font-size: 16px;
   height: 100%;
 }
-@media (max-width: 600px) {
+
+@media (min-width: 600px) {
   header h1 {
     font-size: 1.5rem;
   }
@@ -52,11 +63,13 @@ section.serch {
     padding: 10px;
   }
 }
+
 .error {
   text-align: center;
   color: red;
   padding: 1rem;
 }
+
 /* Cards container using CSS Grid */
 #vegetableTable {
   margin-top: 1rem;
@@ -65,6 +78,7 @@ section.serch {
   gap: 1rem;
   padding: 1rem;
 }
+
 /* Card styles */
 .card {
   background: white;
@@ -76,10 +90,12 @@ section.serch {
   align-items: center;
   transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .card:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
+
 .card-img {
   width: 100%;
   height: 150px;
@@ -91,31 +107,37 @@ section.serch {
   align-items: center;
   margin-bottom: 1rem;
 }
+
 .card-img img {
   width: 100%;
   height: auto;
   object-fit: cover;
   border-radius: 12px;
 }
+
 .card-name,
 .card-price,
 .card-stock {
   margin: 0.5rem 0;
   text-align: center;
 }
+
 .card-name {
   font-size: 1.3rem;
   font-weight: bolder;
 }
+
 .card-price {
   background-color: #4caf50;
   padding: 10px 15px;
   border-radius: 8px;
 }
+
 .btn-container {
   display: flex;
   justify-content: space-evenly;
 }
+
 .btn-arr {
   border: none;
   outline: none;
@@ -127,9 +149,11 @@ section.serch {
   transition: 0.3s;
   border-radius: 10px;
 }
+
 .btn-arr:hover {
   scale: 1.1;
 }
+
 .whatapp-cont {
   width: 4rem;
   height: 4rem;
@@ -140,7 +164,10 @@ section.serch {
   background-color: black;
   overflow: visible;
   z-index: 1000;
+  /* transform: translate(-50%, -50%) scale(1); */
+  /* animation: bounceRing 2s infinite; */
 }
+
 .whatapp-cont::after {
   content: "";
   position: absolute;
@@ -152,7 +179,10 @@ section.serch {
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(1);
   animation: bounceRing 2s infinite;
+  pointer-events: none;
+  cursor: pointer;
 }
+
 @keyframes bounceRing {
   0% {
     transform: translate(-50%, -50%) scale(1);
@@ -167,11 +197,13 @@ section.serch {
     opacity: 0;
   }
 }
+
 .whatapp-icon {
   width: 100%;
   height: 100%;
   object-position: center;
 }
+
 /* Last section with map and footer aside */
 .last-section {
   display: flex;
@@ -179,11 +211,13 @@ section.serch {
   width: 100vw;
   height: 250px;
 }
+
 .map-container {
   flex: 2;
   min-width: 300px;
   height: 100%;
 }
+
 .footer-aside {
   flex: 1;
   min-width: 200px;
@@ -195,14 +229,30 @@ section.serch {
   padding: 1rem;
   text-align: center;
 }
+
 .footer-aside p {
   margin: 0;
   font-size: 1.2rem;
 }
+
 .heart-icon {
   display: inline-block;
   animation: pulse 1.5s infinite ease-in-out;
 }
+
+@media (max-width: 600px) {
+  .last-section {
+    flex-direction: column;
+    height: auto;
+  }
+  .map-container,
+  .footer-aside {
+    width: 100%;
+    min-width: unset;
+    height: auto;
+  }
+}
+
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -214,6 +264,7 @@ section.serch {
     transform: scale(1);
   }
 }
+
 @media (max-width: 600px) {
   .card-img {
     height: 200px;
@@ -236,5 +287,44 @@ section.serch {
     width: 90%;
     margin: 0.5rem 0;
     height: 300px;
+  }
+}
+
+/* --- Additional Responsive Breakpoints --- */
+
+/* Tablet devices */
+@media (min-width: 768px) {
+  header h1 {
+    font-size: 2.5rem;
+  }
+  section.serch {
+    width: 80%;
+    flex-direction: row;
+    height: auto;
+  }
+  .serch-input {
+    margin-bottom: 0;
+  }
+  #vegetableTable {
+    gap: 1.5rem;
+  }
+}
+
+/* Desktop devices */
+@media (min-width: 1024px) {
+  header {
+    padding: 2rem;
+  }
+  section.serch {
+    width: 70%;
+  }
+  /* .card {
+    padding: 2rem;
+  } */
+  /* .card-img {
+    height: 200px;
+  } */
+  .footer-aside p {
+    font-size: 1.5rem;
   }
 }
