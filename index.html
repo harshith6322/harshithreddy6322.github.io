@@ -4,149 +4,202 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fresh Vegetables - Live Inventory</title>
-    <link rel="stylesheet" href="style.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script defer src="index.js"></script>
-    
   </head>
   <body>
-<div class="display loading">
-  <div class="display_cont">
-   <div class="display_img">
-    <img src="./logo1.png" alt="logo">
-   </div>
-   <h2>Veggies Hub</h2>
-    <p>fresh veggies from farmers</p>
-  </div>
-</div>
-<div class="main-display">
-    <header style="justify-content: space-between; padding: 10px 20px; ">
-     <div  style="display: flex; align-items: center; gap: 20px
-     ;">
-      <div class="nav-logo" >
-        <img src="./logo1.png" alt="Fresh Vegetables Logo" />
-      </div>
-      <div class="nav-company">
-        <h1>Veggies Hub</h1>
-        <P>fresh veggies from farmers</P>
-      </div>
-      <div>
-        <div style="width: 90px; height: 40px;">
-          <img src="./vecteezy_a-delivery-man-riding-a-scooter-on-green-background-4k_7118563.gif" alt="" style="width: 100%; height: 100%;">
+    <div class="display loading">
+      <div class="display_cont">
+        <div class="display_img">
+          <img src="./logo1.png" alt="logo" />
         </div>
+        <h2>Veggies Hub</h2>
+        <p>fresh veggies from farmers</p>
       </div>
-     </div>
-    
-    </header>
-    <section class="search">
-      <input
-        class="search-input"
-        type="search"
-        placeholder="search"
-        id="searchInput"
-      />
-      <select name="option" id="option">
-        <option value="none" selected>none</option>
-        <option value="stock">Sort by stock</option>
-        <option value="price">Sort by price</option>
-        <option value="topSelling">Sort by top selling</option>
-      </select>
-    </section>
-    <section class="btn-container">
-      <button class="btn-arr" id="btnSheet1">Vegetables</button>
-      <button class="btn-arr" id="btnSheet2">Fruits</button>
-      <button class="btn-arr" id="btnSheet3">Flowers</button>
-    </section>
-    <section>
-      <table id="vegetableTable"></table>
-      <div id="errorMessage" class="error"></div>
-    </section>
-    <section class="whatsapp-cont">
-      <a
-        href="https://wa.me/message/CN6GL2IACTXZM1"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          src="https://cdn2.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-whatsapp-circle-1024.png"
-          alt="Order via WhatsApp"
-          class="whatsapp-icon"
+    </div>
+    <div class="main-display">
+      <header style="justify-content: space-between; padding: 10px 20px">
+        <div style="display: flex; align-items: center; gap: 20px">
+          <div class="nav-logo">
+            <img src="./logo1.png" alt="Fresh Vegetables Logo" />
+          </div>
+          <div class="nav-company">
+            <h1>Veggies Hub</h1>
+            <p>fresh veggies from farmers</p>
+          </div>
+          <div>
+            <div style="width: 90px; height: 40px">
+              <img
+                src="./vecteezy_a-delivery-man-riding-a-scooter-on-green-background-4k_7118563.gif"
+                alt=""
+                style="width: 100%; height: 100%"
+              />
+            </div>
+          </div>
+        </div>
+      </header>
+      <section class="search">
+        <input
+          class="search-input"
+          type="search"
+          placeholder="search"
+          id="searchInput"
         />
-      </a>
-    </section>
-    <section class="call-cont">
-     <a href="tel:9059053113">
-        <img
-          src="./phone.png"
-          alt="Order via WhatsApp"
-          class="call-icon"
-        />
-      </a>
-    </section>
-    <section class="last-section">
-      <style>
-      .last-section {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding: 20px;
-        box-sizing: border-box;
-        align-items: center;
-        background-color: #4caf50;
-        
-      }
-      .map-container {
-        flex: 1 1 60%;
-        min-width: 300px;
-        position: relative;
-        overflow: hidden;
-      }
-      .map-container iframe {
-        width: 100%;
-        height: 100%;
-        min-height: 300px;
-        border: 0;
-      }
-      .footer-aside {
-        flex: 1 1 30%;
-        min-width: 280px;
-        padding: 20px;
-        box-sizing: border-box;
-        text-align: justify;
-      }
-      @media (max-width: 768px) {
-        .last-section {
-        flex-direction: column;
-        align-items: center;
-        }
-        .map-container,
-        .footer-aside {
-        flex: unset;
-        width: 100%;
-        padding: 10px;
-        }
-      }
-     
-      </style>
-      <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d347.7520518349702!2d79.3681411!3d13.617793!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb2b4c7c371aa0b%3A0xf66354d289ef2e15!2s2%2F532%2C%20Saibaba%20Colony%2C%20Thatithopu%2C%20Akkarampalle%2C%20Tirupati%2C%20Andhra%20Pradesh%20517502!5e1!3m2!1sen!2sin!4v1739985472024!5m2!1sen!2sin" loading="lazy" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade" style="border-radius: 20px;"></iframe>
-      </div>
-      <aside class="footer-aside" style=" padding: 10px; border-radius: 10px;">
-        <div style="display: flex; justify-content: center; margin-bottom: 15px;">
-            <address style="font-size: 1.1em; color: #333; font-style: normal; line-height: 1.5; text-align: left;  padding: 10px;  border-radius: 5px;">
-            <strong>Contact:</strong> 
-           S.poojitha 2-532 Lakshmi Narayana Layout,
-            Thatithopu, Tirupati Rural 517505<br>
-           
+        <select name="option" id="option">
+          <option value="none" selected>none</option>
+          <option value="stock">Sort by stock</option>
+          <option value="price">Sort by price</option>
+          <option value="topSelling">Sort by top selling</option>
+        </select>
+      </section>
+      <section class="btn-container">
+        <button class="btn-arr" id="btnSheet1">Vegetables</button>
+        <button class="btn-arr" id="btnSheet2">Fruits</button>
+        <button class="btn-arr" id="btnSheet3">Flowers</button>
+      </section>
+      <section>
+        <table id="vegetableTable"></table>
+        <div id="errorMessage" class="error"></div>
+      </section>
+      <section class="whatsapp-cont">
+        <a
+          href="https://wa.me/message/CN6GL2IACTXZM1"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://cdn2.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-whatsapp-circle-1024.png"
+            alt="Order via WhatsApp"
+            class="whatsapp-icon"
+          />
+        </a>
+      </section>
+      <section class="call-cont">
+        <a href="tel:9059053113">
+          <img src="./phone.png" alt="Order via WhatsApp" class="call-icon" />
+        </a>
+      </section>
+      <section class="last-section">
+        <style>
+          .last-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+            box-sizing: border-box;
+            align-items: center;
+            background-color: #4caf50;
+          }
+          .map-container {
+            flex: 1 1 60%;
+            min-width: 300px;
+            position: relative;
+            overflow: hidden;
+          }
+          .map-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            border: 0;
+          }
+          .footer-aside {
+            flex: 1 1 30%;
+            min-width: 280px;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: justify;
+            /* background-color: cadetblue; */
+          }
+          .pro-btn {
+            margin-top: 30px;
+            text-decoration: none;
+            width: 25px;
+            height: 20px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            background-color: white;
+          }
+          @media (max-width: 768px) {
+            .last-section {
+              flex-direction: column;
+              align-items: center;
+            }
+            .map-container,
+            .footer-aside {
+              flex: unset;
+              width: 100%;
+              padding: 10px;
+            }
+          }
+        </style>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d347.7520518349702!2d79.3681411!3d13.617793!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb2b4c7c371aa0b%3A0xf66354d289ef2e15!2s2%2F532%2C%20Saibaba%20Colony%2C%20Thatithopu%2C%20Akkarampalle%2C%20Tirupati%2C%20Andhra%20Pradesh%20517502!5e1!3m2!1sen!2sin!4v1739985472024!5m2!1sen!2sin"
+            loading="lazy"
+            allowfullscreen=""
+            referrerpolicy="no-referrer-when-downgrade"
+            style="border-radius: 20px"
+          ></iframe>
+        </div>
+        <aside class="footer-aside" style="padding: 10px; border-radius: 10px">
+          <div
+            style="display: flex; justify-content: center; margin-bottom: 15px"
+          >
+            <address
+              style="
+                font-size: 1.1em;
+                color: #333;
+                font-style: normal;
+                line-height: 1.5;
+                text-align: left;
+                padding: 10px;
+                border-radius: 5px;
+              "
+            >
+              <strong>Contact:</strong>
+              S.poojitha 2-532 Lakshmi Narayana Layout, Thatithopu, Tirupati
+              Rural 517505<br />
             </address>
-        </div>
-        <p style="font-size: 0.9em; color: #555; margin: 5px; text-align: center;">
-          &copy; 2023 Harshith. All Rights Reserved.<br>
-          <a href="mailto:harshithreddy6322@gmail.com">Gmail</a>
-          <a href="https://harshith6322-portfolio.vercel.app/">Contact devloper</a>
-        </p>
-      </aside>
-    </section></div>
-  </span>
+          </div>
+          <p
+            style="
+              font-size: 0.9em;
+              color: #555;
+              margin: 5px;
+              text-align: center;
+            "
+          >
+            &copy; 2023 Harshith. All Rights Reserved.<br />
+          </p>
+          <div
+            style="
+              text-align: center;
+              text-decoration: none;
+              font-size: 0.6rem;
+              color: aqua;
+            "
+          >
+            <a
+              href="mailto:harshithreddy6322@gmail.com"
+              style="text-decoration: none"
+              >Harshith @FULLSTACK DEV</a
+            >
+            <br />
+            <a
+              href="mailto:sunilrevela123@gmail.com"
+              style="text-decoration: none"
+              >Sunil @BACKEND DEV</a
+            >
+          </div>
+        </aside>
+      </section>
+    </div>
+    <!-- </span> -->
   </body>
 </html>
