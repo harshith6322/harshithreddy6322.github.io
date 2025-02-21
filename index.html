@@ -5,11 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fresh Vegetables - Live Inventory</title>
     <link rel="stylesheet" href="style.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script defer src="index.js"></script>
+    
   </head>
   <body>
-
-    <header style="justify-content: space-between;">
+<div class="display loading">
+  <div class="display_cont">
+   <div class="display_img">
+    <img src="./logo1.png" alt="logo">
+   </div>
+   <h2>Veggies Hub</h2>
+    <p>fresh veggies from farmers</p>
+  </div>
+</div>
+<div class="main-display">
+    <header style="justify-content: space-between; padding: 10px 20px; ">
      <div  style="display: flex; align-items: center; gap: 20px
      ;">
       <div class="nav-logo" >
@@ -20,23 +31,8 @@
         <P style="color: white;">fresh veggies from farmers</P>
       </div>
      </div>
-     
-     
-
-      <div class="nav-video" style="display: flex; align-items: center;"></div>
-        <img
-          src="./vecteezy_a-delivery-man-riding-a-scooter-on-green-background-4k_7118563.gif"
-          
-          style="width: 100px; height: auto; "
-          preload="auto"
-          type="video/mp4"
-        ></img>
-      </div>
-    </header>
-   
-
-
     
+    </header>
     <section class="search">
       <input
         class="search-input"
@@ -73,18 +69,34 @@
         />
       </a>
     </section>
-   
+    <section class="call-cont">
+     <a href="tel:9059053113">
+        <img
+          src="./phone.png"
+          alt="Order via WhatsApp"
+          class="call-icon"
+        />
+      </a>
+    </section>
     <section class="last-section">
       <div class="map-container">
         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d347.7520518349702!2d79.3681411!3d13.617793!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb2b4c7c371aa0b%3A0xf66354d289ef2e15!2s2%2F532%2C%20Saibaba%20Colony%2C%20Thatithopu%2C%20Akkarampalle%2C%20Tirupati%2C%20Andhra%20Pradesh%20517502!5e1!3m2!1sen!2sin!4v1739985472024!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
       <aside class="footer-aside">
         <p>
+         <address>
+          Contact S.poojitha
+          2-532 Lakshmi Narayana layout  thatitopu,Tirupati rular 517505
+         </address>
+        </p>
+        <p>
           &copy; 2023 Harshith. All Rights Reserved. Developed by Harshith. Made
           with
           <span class="heart-icon">❤️</span>
         </p>
+
       </aside>
     </section>
+  </span>
   </body>
 </html>

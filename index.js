@@ -1,3 +1,59 @@
+const tl = gsap.timeline();
+window.addEventListener("DOMContentLoaded", function () {
+  // Animate the logo image from above
+  tl.from(".display_img img", {
+    duration: 1,
+    y: -50,
+    opacity: 0,
+    ease: "power2.out",
+  })
+    // Animate the heading from below
+    .from(
+      ".display h2",
+      {
+        duration: 0.8,
+        y: 50,
+        opacity: 0,
+        ease: "power2.out",
+      },
+      "-=0.5"
+    )
+    // Animate the paragraph from below
+    .from(
+      ".display p",
+      {
+        duration: 0.8,
+        y: 50,
+        opacity: 0,
+        ease: "power2.out",
+      },
+      "-=0.5"
+    )
+    // Fade out the loading div and then update displays
+    .to(
+      ".display",
+      {
+        duration: 0.5,
+        opacity: 0,
+        pointerEvents: "none",
+        ease: "power2.out",
+        onComplete: () => {
+          // Hide the loading element completely
+          const loadingEl = document.querySelector(".display");
+          if (loadingEl) loadingEl.style.display = "none";
+          // Set the main display element to block (or remove from DOM if preferred)
+          const mainDisplayEl = document.querySelector(".main-display");
+          if (mainDisplayEl) {
+            mainDisplayEl.style.display = "block";
+            // Alternatively, to remove from DOM, uncomment the following line:
+            // mainDisplayEl.parentNode.removeChild(mainDisplayEl);
+          }
+        },
+      },
+      "+=1"
+    );
+});
+
 // document.addEventListener("contextmenu", function (e) {
 //   e.preventDefault();
 // });
