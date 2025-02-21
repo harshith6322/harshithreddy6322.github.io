@@ -7,6 +7,9 @@
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   scroll-behavior: smooth;
 }
+.card-stock {
+  text-decoration: line-through;
+}
 
 .display {
   position: absolute;
