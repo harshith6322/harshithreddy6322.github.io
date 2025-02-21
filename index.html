@@ -28,7 +28,7 @@
       </div>
       <div class="nav-company">
         <h1>Veggies Hub</h1>
-        <P style="color: white;">fresh veggies from farmers</P>
+        <P>fresh veggies from farmers</P>
       </div>
      </div>
     
@@ -37,7 +37,7 @@
       <input
         class="search-input"
         type="search"
-        placeholder="Type here"
+        placeholder="search"
         id="searchInput"
       />
       <select name="option" id="option">
@@ -79,24 +79,63 @@
       </a>
     </section>
     <section class="last-section">
+      <style>
+      .last-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 20px;
+        box-sizing: border-box;
+        align-items: center;
+      }
+      .map-container {
+        flex: 1 1 60%;
+        min-width: 300px;
+        position: relative;
+        overflow: hidden;
+      }
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        min-height: 300px;
+        border: 0;
+      }
+      .footer-aside {
+        flex: 1 1 30%;
+        min-width: 280px;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      @media (max-width: 768px) {
+        .last-section {
+        flex-direction: column;
+        align-items: center;
+        }
+        .map-container,
+        .footer-aside {
+        flex: unset;
+        width: 100%;
+        padding: 10px;
+        }
+      }
+     
+      </style>
       <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d347.7520518349702!2d79.3681411!3d13.617793!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb2b4c7c371aa0b%3A0xf66354d289ef2e15!2s2%2F532%2C%20Saibaba%20Colony%2C%20Thatithopu%2C%20Akkarampalle%2C%20Tirupati%2C%20Andhra%20Pradesh%20517502!5e1!3m2!1sen!2sin!4v1739985472024!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d347.7520518349702!2d79.3681411!3d13.617793!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb2b4c7c371aa0b%3A0xf66354d289ef2e15!2s2%2F532%2C%20Saibaba%20Colony%2C%20Thatithopu%2C%20Akkarampalle%2C%20Tirupati%2C%20Andhra%20Pradesh%20517502!5e1!3m2!1sen!2sin!4v1739985472024!5m2!1sen!2sin" loading="lazy" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-      <aside class="footer-aside">
-        <p>
-         <address>
-          Contact S.poojitha
-          2-532 Lakshmi Narayana layout  thatitopu,Tirupati rular 517505
-         </address>
+      <aside class="footer-aside" style="background-color: #f0f0f0; padding: 10px; border-radius: 10px;">
+        <div style="display: flex; justify-content: center; margin-bottom: 15px;">
+            <address style="font-size: 1.1em; color: #333; font-style: normal; line-height: 1.5; text-align: left; background-color: #6767675c; padding: 10px;  border-radius: 5px;">
+            <strong>Contact S.poojitha</strong><br>
+            2-532 Lakshmi Narayana Layout,<br>
+            Thatithopu, Tirupati Rural 517505
+            </address>
+        </div>
+        <p style="font-size: 0.9em; color: #555; margin: 5px; text-align: center;">
+          &copy; 2023 Harshith. All Rights Reserved. Developed by Harshith. Made with <span class="heart-icon" style="color: red;">❤️</span>
         </p>
-        <p>
-          &copy; 2023 Harshith. All Rights Reserved. Developed by Harshith. Made
-          with
-          <span class="heart-icon">❤️</span>
-        </p>
-
       </aside>
-    </section>
+    </section></div>
   </span>
   </body>
 </html>
