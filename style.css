@@ -57,7 +57,7 @@ header {
   top: 0;
   width: 100%;
   z-index: 1000;
-  background-color: #4caf50;
+  background-color: #00fc00;
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
@@ -312,6 +312,7 @@ section.search {
     height: 55px;
   }
   .nav-company h1 {
+    color: #555;
     font-size: clamp(1.2rem, 4vw, 1.5rem);
   }
   section.search {
@@ -347,7 +348,7 @@ section.search {
   }
   .nav-company h1 {
     color: #555;
-    font-size: clamp(1.2rem, 3.5vw, 1.2rem);
+    font-size: clamp(1.5rem, 3.5vw, 1.2rem);
   }
   .search-input {
     -webkit-appearance: none;
