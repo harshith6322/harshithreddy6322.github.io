@@ -57,7 +57,7 @@ header {
   top: 0;
   width: 100%;
   z-index: 1000;
-  background-color: #01fe00;
+  background-color: #4caf50;
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
@@ -357,7 +357,7 @@ section.search {
     border-radius: 0;
   }
   .card-name {
-    font-size: 1.1rem;
+    font-size: 0.8rem;
   }
   .card {
     width: 100%;
