@@ -187,6 +187,8 @@ function populateTable(rows) {
       const img = document.createElement("img");
       img.src = row[4];
       img.alt = row[0];
+      img.style.objectFit = "cover";
+      img.style.objectPosition = "center";
       // If the image fails to load, display fallback text
       img.onerror = function () {
         img.style.display = "none";

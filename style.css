@@ -180,8 +180,9 @@ section.search {
 
 .card-img img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .card-name,
@@ -420,7 +421,14 @@ section.search {
   }
   .card-img {
     height: auto;
+    object-fit: cover;
+    object-position: center;
     aspect-ratio: 16/9;
+  }
+  .card-img img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
   .whatsapp-cont {
     width: 3rem;
@@ -468,6 +476,10 @@ section.search {
   }
   .card {
     padding: 0.8rem;
+  }
+  .card-img {
+    object-fit: cover;
+    object-position: center;
   }
   .btn-arr {
     padding: 8px 12px;
