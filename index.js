@@ -99,8 +99,8 @@ window.addEventListener("DOMContentLoaded", function () {
 //   }
 // });
 
-const sheetID = "1SWxVgnorKFtuTL5X23OyTnBRLf3XioUwcyumn6_3r9Q";
-const apiKey = "AIzaSyCyX7kN7bnJWADL3Oa2sR4S2MVLzqX98qg";
+const sheetID = "14buYMrQOTrWOT4bCeUPbQfhBhzjJPWwESYwe63G3XSE";
+const apiKey = "AIzaSyCfPW2ii5k6s2jM99CVZQ_8yKOuPjqz4Po";
 let sheetName = "Sheet1"; // default sheet
 let range = `${sheetName}!A:Z`;
 
@@ -190,6 +190,8 @@ function populateTable(rows) {
       // If the image fails to load, display fallback text
       img.onerror = function () {
         img.style.display = "none";
+        img.style.objectFit = "cover";
+        img.style.objectPosition = "center";
         imgContainer.textContent = row[0];
       };
       imgContainer.appendChild(img);
@@ -201,7 +203,7 @@ function populateTable(rows) {
     card.appendChild(imgContainer);
 
     // If stock is zero, add an "Out of Stock" label and a red border
-    if (parseFloat(row[2]) === 0) {
+    if (parseFloat(row[5]) === 0) {
       const outOfStockLabel = document.createElement("div");
       outOfStockLabel.textContent = "Out of Stock";
       outOfStockLabel.style.position = "absolute";
