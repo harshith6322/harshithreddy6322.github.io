@@ -142,10 +142,13 @@ async function fetchVegetableData() {
 }
 
 function updateTable() {
-  const searchInput = document
-    .getElementById("searchInput")
-    .value.toLowerCase();
-  const sortOption = document.getElementById("option").value;
+  // Sanitize the search input using DOMPurify
+  const searchInput = DOMPurify.sanitize(
+    document.getElementById("searchInput").value
+  ).toLowerCase();
+  const sortOption = DOMPurify.sanitize(
+    document.getElementById("option").value
+  );
   let filteredData = vegetableData.filter((row) =>
     row[0].toLowerCase().includes(searchInput)
   );
