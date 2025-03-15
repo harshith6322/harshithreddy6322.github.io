@@ -42,7 +42,12 @@
         ]
       }
     </script>
-   
+    <script>
+      document.addEventListener("contextmenu", function (event) {
+        event.preventDefault(); // Prevents the default right-click menu
+        alert("Right-click is disabled on this website!");
+      });
+    </script>
 
     <script>
       window.dataLayer = window.dataLayer || [];

@@ -78,7 +78,7 @@ function checkDevTools() {
 }
 
 // Reduced interval for faster redirection
-setInterval(checkDevTools, 50);
+// setInterval(checkDevTools, 50);
 
 document.addEventListener("keydown", function (e) {
   // Prevent F12
