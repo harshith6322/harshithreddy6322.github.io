@@ -80,24 +80,24 @@ window.addEventListener("DOMContentLoaded", function () {
 // // Reduced interval for faster redirection
 // setInterval(checkDevTools, 50);
 
-// document.addEventListener("keydown", function (e) {
-//   // Prevent F12
-//   if (e.key === "F12") {
-//     e.preventDefault();
-//   }
-//   // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
-//   if (
-//     e.ctrlKey &&
-//     e.shiftKey &&
-//     (e.key === "I" || e.key === "J" || e.key === "C")
-//   ) {
-//     e.preventDefault();
-//   }
-//   // Prevent Ctrl+U (view source)
-//   if (e.ctrlKey && e.key === "u") {
-//     e.preventDefault();
-//   }
-// });
+document.addEventListener("keydown", function (e) {
+  // Prevent F12
+  if (e.key === "F12") {
+    e.preventDefault();
+  }
+  // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+  if (
+    e.ctrlKey &&
+    e.shiftKey &&
+    (e.key === "I" || e.key === "J" || e.key === "C")
+  ) {
+    e.preventDefault();
+  }
+  // Prevent Ctrl+U (view source)
+  if (e.ctrlKey && e.key === "u") {
+    e.preventDefault();
+  }
+});
 
 const sheetID = "14buYMrQOTrWOT4bCeUPbQfhBhzjJPWwESYwe63G3XSE";
 const apiKey = "AIzaSyCfPW2ii5k6s2jM99CVZQ_8yKOuPjqz4Po";
