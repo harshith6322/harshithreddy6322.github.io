@@ -48,6 +48,40 @@
         alert("Right-click is disabled on this website!");
       });
     </script>
+    <script type="application/ld+json">
+      {
+        "Organization": {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "veggieshub",
+          "url": "https://www.veggieshub.in/",
+          "logo": "https://www.veggieshub.in/logo1.png",
+          "description": "A variety of fresh vegetables straight from the farms"
+        },
+        "FAQPage": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is the delivery time for fresh vegetables?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We deliver fresh vegetables within 24 hours of placing the order."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Are your products organic?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, all our products are 100% organic and sourced directly from farms."
+              }
+            }
+          ]
+        }
+      }
+    </script>
 
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -58,7 +92,7 @@
 
       gtag("config", "G-QR75Q6RVPD", { debug_mode: true });
     </script>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> -->
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <title>The Veggies Hub, Tirupati Thatithopu</title>
     <meta
@@ -70,8 +104,10 @@
       content="Tirupati fresh vegetables, Tirupati organic fruits, farm produce Tirupati, fresh flowers online Tirupati, farm-to-table Tirupati, healthy lifestyle Tirupati, organic food delivery Tirupati, sustainable living Tirupati"
     />
 
-    <meta name="author" content="veggieshub" />
-    <meta property="og:title" content="Farm-Fresh Produce & Flowers Online" />
+    <meta
+      property="og:title"
+      content="Farm-Fresh Produce &amp; Flowers Online"
+    />
     <meta
       property="og:description"
       content="Order fresh vegetables, organic fruits, and beautiful flowers. 100% fresh, farm-to-door delivery. Perfect for your healthy lifestyle!"
